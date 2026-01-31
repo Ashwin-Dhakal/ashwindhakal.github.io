@@ -1,4 +1,4 @@
 # Personal Website
 
-Visit the website: **[ashwindhakal.com](https://ashwindhakal.com)**
+Website: **[AshwinDhakal.com](https://ashwindhakal.com)**
 
