@@ -66,3 +66,6 @@ tmp/
 *.sln
 *.sw?
 
+# Documentation
+docs/
+

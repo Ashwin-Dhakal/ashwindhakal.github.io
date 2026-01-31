@@ -130,11 +130,6 @@ body {
     color: var(--secondary-color);
 }
 
-.nav-item-projects,
-.nav-item-teaching {
-    display: none; /* Hidden by default, shown on projects/teaching pages */
-}
-
 .nav-toggle {
     display: none;
     flex-direction: column;

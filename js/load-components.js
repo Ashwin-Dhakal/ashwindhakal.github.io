@@ -25,19 +25,8 @@ fetch('includes/footer.html')
 // ============================================
 
 function initializeNavigation() {
-    // Show/hide Projects and Teaching links based on current page
+    // Set active link based on current page
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    const projectsItem = document.querySelector('.nav-item-projects');
-    const teachingItem = document.querySelector('.nav-item-teaching');
-    
-    // Show Projects/Teaching on those pages and hide on others
-    if (currentPage === 'projects.html' || currentPage === 'teaching.html') {
-        if (projectsItem) projectsItem.style.display = 'list-item';
-        if (teachingItem) teachingItem.style.display = 'list-item';
-    } else {
-        if (projectsItem) projectsItem.style.display = 'none';
-        if (teachingItem) teachingItem.style.display = 'none';
-    }
     
     // Set active link
     const navLinks = document.querySelectorAll('.nav-link');
