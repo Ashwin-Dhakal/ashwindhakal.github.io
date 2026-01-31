@@ -37,6 +37,7 @@ const navbar = document.getElementById('navbar');
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
+    if (!navbar) return;
     const currentScroll = window.pageYOffset;
     
     if (currentScroll > 100) {
@@ -49,15 +50,6 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// Set Current Year
-// ============================================
-
-const currentYearElement = document.getElementById('currentYear');
-if (currentYearElement) {
-    currentYearElement.textContent = new Date().getFullYear();
-}
-
-// ============================================
 // Set Last Updated Date
 // ============================================
 
@@ -67,6 +59,22 @@ if (lastUpdatedElement) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     lastUpdatedElement.textContent = lastUpdated.toLocaleDateString('en-US', options);
 }
+
+// ============================================
+// Active Navigation Link Highlighting
+// ============================================
+
+const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const navLinks = document.querySelectorAll('.nav-link');
+
+navLinks.forEach(link => {
+    const linkHref = link.getAttribute('href');
+    if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+        link.classList.add('active');
+    } else {
+        link.classList.remove('active');
+    }
+});
 
 // ============================================
 // Smooth Scroll for Anchor Links
@@ -87,22 +95,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             }
         }
     });
-});
-
-// ============================================
-// Active Navigation Link Highlighting
-// ============================================
-
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-const navLinks = document.querySelectorAll('.nav-link');
-
-navLinks.forEach(link => {
-    const linkHref = link.getAttribute('href');
-    if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
-        link.classList.add('active');
-    } else {
-        link.classList.remove('active');
-    }
 });
 
 // ============================================

@@ -130,6 +130,11 @@ body {
     color: var(--secondary-color);
 }
 
+.nav-item-projects,
+.nav-item-teaching {
+    display: none; /* Hidden by default, shown on projects/teaching pages */
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -266,13 +271,15 @@ body {
 }
 
 .profile-image {
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    border: 4px solid white;
+    border: 3px solid white;
+    display: block;
+    max-width: 100%;
 }
 
 /* ============================================
@@ -317,6 +324,175 @@ section {
     font-weight: 600;
 }
 
+.about-text a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.about-text a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+}
+
+/* ============================================
+   Education Section
+   ============================================ */
+
+.education {
+    background-color: var(--bg-light);
+}
+
+.education-list {
+    max-width: 900px;
+}
+
+.education-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.education-item:last-child {
+    border-bottom: none;
+}
+
+.edu-degree {
+    flex: 1;
+}
+
+.edu-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+}
+
+.edu-institution {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
+}
+
+.edu-awards {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-bottom: 0.15rem;
+}
+
+.edu-details {
+    text-align: right;
+}
+
+.edu-date {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+}
+
+.edu-location {
+    font-size: 0.85rem;
+    color: var(--text-light);
+}
+
+/* ============================================
+   Professional Experience Section
+   ============================================ */
+
+.professional-experience {
+    background-color: var(--bg-color);
+}
+
+.experience-subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: var(--spacing-md) 0 var(--spacing-sm) 0;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.experience-subtitle:first-of-type {
+    margin-top: 0;
+}
+
+.experience-block {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.experience-block:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
+}
+
+.experience-list {
+    max-width: 900px;
+    margin-bottom: 0;
+}
+
+.experience-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.experience-item:last-child {
+    border-bottom: none;
+}
+
+.exp-content {
+    flex: 1;
+}
+
+.exp-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+}
+
+.exp-type {
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-light);
+}
+
+.exp-organization {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.exp-details {
+    text-align: right;
+}
+
+.exp-date {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+}
+
+.exp-location {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
 /* ============================================
    Research Interests Section
    ============================================ */
@@ -327,16 +503,17 @@ section {
 
 .interests-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-sm);
 }
 
 .interest-item {
     background-color: var(--bg-color);
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-md);
     border-radius: 8px;
     text-align: center;
     font-weight: 500;
+    font-size: 0.95rem;
     color: var(--primary-color);
     border: 2px solid var(--border-color);
     transition: var(--transition);
@@ -395,79 +572,120 @@ section {
    ============================================ */
 
 .publications {
-    background-color: var(--bg-light);
+    background-color: var(--bg-color);
 }
 
-.publications-list {
-    max-width: 900px;
-}
+/* ============================================
+   Publications Grid (Card Layout)
+   ============================================ */
 
-.publication-item {
+.publications-grid {
     display: grid;
-    grid-template-columns: 50px 1fr;
-    gap: var(--spacing-md);
-    padding: var(--spacing-lg) 0;
-    border-bottom: 1px solid var(--border-color);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
 }
 
-.publication-item:last-child {
-    border-bottom: none;
-}
-
-.pub-number {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--secondary-color);
+.pub-card {
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
     display: flex;
-    align-items: flex-start;
-    padding-top: 0.25rem;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
 }
 
-.pub-content {
+.pub-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--secondary-color);
+}
+
+.pub-image {
+    width: 100%;
+    height: 240px;
+    background-color: var(--bg-light);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pub-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.pub-card:hover .pub-img {
+    transform: scale(1.05);
+}
+
+.pub-card-content {
+    padding: var(--spacing-md);
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
-.pub-title {
-    font-size: 1.1rem;
+.pub-card-title {
+    font-size: 1rem;
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: var(--spacing-xs);
     line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.pub-authors {
-    font-size: 0.95rem;
+.pub-card-authors {
+    font-size: 0.85rem;
     color: var(--text-color);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
 }
 
-.pub-venue {
-    font-size: 0.9rem;
+.pub-card-venue {
+    font-size: 0.8rem;
     color: var(--text-light);
     font-style: italic;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1;
 }
 
-.pub-links {
+.pub-card-links {
     display: flex;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
+    margin-top: auto;
     flex-wrap: wrap;
 }
 
-.pub-link {
+.pub-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
     color: var(--secondary-color);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 500;
-    padding: 0.25rem 0.75rem;
+    padding: 0.4rem 0.8rem;
     border: 1px solid var(--secondary-color);
     border-radius: 4px;
     transition: var(--transition);
 }
 
-.pub-link:hover {
+.pub-card-link:hover {
     background-color: var(--secondary-color);
     color: white;
+}
+
+.pub-card-link svg {
+    flex-shrink: 0;
 }
 
 .view-all {
@@ -492,6 +710,250 @@ section {
     border-color: var(--hover-color);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+/* ============================================
+   Awards Page
+   ============================================ */
+
+.awards-list {
+    max-width: 900px;
+    margin-bottom: var(--spacing-xl);
+}
+
+.award-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: var(--spacing-md);
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.award-item:last-child {
+    border-bottom: none;
+}
+
+.award-item:hover {
+    background-color: var(--bg-light);
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+    margin-left: calc(-1 * var(--spacing-sm));
+    margin-right: calc(-1 * var(--spacing-sm));
+    border-radius: 5px;
+}
+
+.award-year {
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0.1rem;
+}
+
+.award-content {
+    flex: 1;
+}
+
+.award-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+}
+
+.award-organization {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.award-description {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+/* ============================================
+   Contact Page
+   ============================================ */
+
+.contact {
+    background-color: var(--bg-color);
+    min-height: calc(100vh - var(--nav-height));
+}
+
+.contact-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.contact-intro {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-top: var(--spacing-md);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 900px;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.contact-card {
+    background-color: var(--bg-color);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
+}
+
+.contact-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto var(--spacing-md);
+    background: linear-gradient(135deg, var(--secondary-color), var(--hover-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.contact-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.contact-email {
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    word-break: break-word;
+    margin: 0;
+}
+
+.contact-address {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.contact-address p {
+    margin-bottom: 0.4rem;
+}
+
+.contact-address p:last-child {
+    margin-bottom: 0;
+}
+
+.contact-social {
+    text-align: center;
+    max-width: 600px;
+    margin: var(--spacing-xl) auto 0;
+    padding-top: var(--spacing-xl);
+    border-top: 2px solid var(--border-color);
+}
+
+.contact-social-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.social-links-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.social-link-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    transition: var(--transition);
+    background-color: var(--bg-color);
+}
+
+.social-link-card:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.social-link-card svg {
+    flex-shrink: 0;
+}
+
+.contact-map {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-xl);
+    border-top: 2px solid var(--border-color);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-map-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.map-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+}
+
+.map-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.map-container iframe {
+    display: block;
+    width: 100%;
+    height: 400px;
+    border: none;
+}
+
+.map-note {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: var(--spacing-sm);
+    font-style: italic;
 }
 
 /* ============================================
@@ -579,6 +1041,24 @@ section {
         margin: 0 auto;
     }
 
+    .education-item {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .edu-details {
+        text-align: left;
+    }
+
+    .experience-item {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .exp-details {
+        text-align: left;
+    }
+
     .interests-grid {
         grid-template-columns: 1fr;
     }
@@ -592,25 +1072,24 @@ section {
         margin-bottom: 0.5rem;
     }
 
-    .publication-item {
+    .publications-grid {
         grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
+        gap: var(--spacing-md);
     }
 
-    .pub-number {
-        display: none;
+    .award-item {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xs);
     }
 
-    .pub-title::before {
-        content: counter(pub-counter) ". ";
-        counter-increment: pub-counter;
-        color: var(--secondary-color);
-        font-weight: 700;
-        margin-right: 0.5rem;
+    .award-year {
+        margin-bottom: 0.5rem;
     }
+}
 
-    .publications-list {
-        counter-reset: pub-counter;
+@media (max-width: 900px) and (min-width: 601px) {
+    .publications-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -635,6 +1114,37 @@ section {
 
     .stat-number {
         font-size: 1.5rem;
+    }
+
+    .pub-image {
+        height: 180px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .contact-card {
+        padding: var(--spacing-md);
+    }
+
+    .contact-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .social-links-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .social-link-card {
+        justify-content: center;
+    }
+
+    .map-container iframe {
+        height: 300px;
     }
 }
 
