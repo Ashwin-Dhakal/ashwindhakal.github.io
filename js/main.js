@@ -55,8 +55,8 @@ window.addEventListener('scroll', () => {
 
 const lastUpdatedElement = document.getElementById('lastUpdated');
 if (lastUpdatedElement) {
-    // Hardcoded date - update this date manually when you update the website
-    const lastUpdatedDate = 'January 15, 2025';
+        // Hardcoded date - update this date manually when you update the website
+        const lastUpdatedDate = 'January 15, 2026';
     lastUpdatedElement.textContent = lastUpdatedDate;
 }
 
