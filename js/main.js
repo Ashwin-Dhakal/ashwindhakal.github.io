@@ -50,14 +50,14 @@ window.addEventListener('scroll', () => {
 });
 
 // ============================================
-// Set Last Updated Date
+// Set Last Updated Date (Hardcoded - Update manually when site is updated)
 // ============================================
 
 const lastUpdatedElement = document.getElementById('lastUpdated');
 if (lastUpdatedElement) {
-    const lastUpdated = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    lastUpdatedElement.textContent = lastUpdated.toLocaleDateString('en-US', options);
+    // Hardcoded date - update this date manually when you update the website
+    const lastUpdatedDate = 'January 15, 2025';
+    lastUpdatedElement.textContent = lastUpdatedDate;
 }
 
 // ============================================
